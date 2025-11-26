@@ -1,0 +1,44 @@
+# Emacs generated files
+.emacs.d/custom.el
+.emacs.d/elpa/
+.emacs.d/eln-cache/
+.emacs.d/auto-save-list/
+.emacs.d/transient/
+.emacs.d/url/
+.emacs.d/eshell/
+.emacs.d/request/
+.emacs.d/semanticdb/
+.emacs.d/srecode-map.el
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/projectile.cache
+.emacs.d/recentf
+.emacs.d/places
+.emacs.d/bookmarks
+.emacs.d/.lsp-session*
+.emacs.d/anaconda-mode/
+.emacs.d/elpy/
+.emacs.d/network-security.data
+.emacs.d/tramp
+.emacs.d/games/
+
+# Backup files
+*~
+\#*\#
+.\#*
+*.swp
+
+# Compiled elisp
+*.elc
+
+# Desktop files
+.emacs.desktop
+.emacs.desktop.lock
+
+# Org mode generated
+*.org~
+*.tex
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
