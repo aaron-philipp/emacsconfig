@@ -4,6 +4,7 @@ Personal Emacs configuration using modern `use-package` declarations.
 
 ## Features
 
+- **Claude Code** - AI pair programming with Claude directly in Emacs
 - **Dashboard** - Custom startup screen with quick links and recent files
 - **Zenburn Theme** - Easy on the eyes color scheme
 - **All The Icons** - Beautiful icons throughout the UI
@@ -15,6 +16,18 @@ Personal Emacs configuration using modern `use-package` declarations.
 - **Org Mode** - Notes and agenda with timeline
 
 ## Installation
+
+### Prerequisites
+
+For Claude Code integration, install the CLI first:
+
+```bash
+# Using npm
+npm install -g @anthropic-ai/claude-code
+
+# Or using Homebrew (macOS)
+brew install anthropic/tap/claude-code
+```
 
 ### Quick Install
 
@@ -48,6 +61,20 @@ cp -r emacsconfig/.emacs.d ~/
 
 ## Key Bindings
 
+### Claude Code (`C-c c` prefix)
+
+| Key | Function |
+|-----|----------|
+| `C-c c c` | Start Claude Code in project root |
+| `C-c c s` | Send prompt to Claude |
+| `C-c c x` | Send prompt with current file context |
+| `C-c c e` | Fix error at point (flycheck/flymake) |
+| `C-c c r` | Resume previous session |
+| `C-c c k` | Kill Claude process |
+| `C-c c m` | Cycle mode (default/auto-accept/plan) |
+
+### General
+
 | Key | Function |
 |-----|----------|
 | `C-c p` | Projectile prefix |
@@ -78,12 +105,14 @@ Edit `.emacs.d/init.el` to customize. The config is organized into sections:
 9. LSP
 10. Org Mode
 11. Modeline
-12. Fun Stuff
+12. AI - Claude Code
+13. Fun Stuff
 
 ## Requirements
 
-- Emacs 27+ (for early-init.el support)
+- Emacs 28+ (29+ recommended for `:vc` use-package support)
 - Git (for package installation)
+- Claude Code CLI (for AI features)
 
 ## License
 

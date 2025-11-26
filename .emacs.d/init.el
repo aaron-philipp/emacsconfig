@@ -238,6 +238,44 @@
   (mode-icons-mode))
 
 ;; ============================================================================
+;; AI - Claude Code
+;; ============================================================================
+
+;; Terminal emulator for Claude Code (using eat - lighter than vterm)
+(use-package eat
+  :ensure t)
+
+;; Claude Code integration
+;; Requires: npm install -g @anthropic-ai/claude-code
+;; Or: brew install anthropic/tap/claude-code
+(use-package claude-code
+  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :after eat
+  :config
+  ;; Use eat as the terminal backend (alternative: 'vterm)
+  (setq claude-code-terminal-backend 'eat)
+  ;; Enable global mode for keybindings
+  (claude-code-mode 1)
+  :bind-keymap
+  ("C-c c" . claude-code-command-map))
+
+;; Optional: Monet for go-to-definition from Claude suggestions
+;; (use-package monet
+;;   :vc (:url "https://github.com/stevemolitor/monet" :rev :newest)
+;;   :config
+;;   (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
+;;   (monet-mode 1))
+
+;; Claude Code Keybindings (with C-c c prefix):
+;;   C-c c c   - Start Claude Code in project root
+;;   C-c c s   - Send prompt to Claude
+;;   C-c c x   - Send prompt with current file context
+;;   C-c c e   - Fix error at point (flycheck/flymake)
+;;   C-c c r   - Resume previous session
+;;   C-c c k   - Kill Claude process
+;;   C-c c m   - Cycle mode (default/auto-accept/plan)
+
+;; ============================================================================
 ;; Fun Stuff
 ;; ============================================================================
 
