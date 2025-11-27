@@ -109,13 +109,13 @@
   (setq dashboard-navigator-buttons
         `(((,(all-the-icons-octicon "mark-github" :height 1.0 :v-adjust 0.0)
             "Repos" "GitHub Repos"
-            (lambda (&rest _) (browse-url "https://github.com/aaron-philipp")))
+            (lambda (&rest _) (browse-url "https://github.com/")))
            (,(all-the-icons-octicon "organization" :height 1.0 :v-adjust 0.0)
             "Jira" "Atlassian"
             (lambda (&rest _) (browse-url "https://start.atlassian.com/")))
            (,(all-the-icons-octicon "mail-read" :height 1.0 :v-adjust 0.0)
             "Gmail" "Email"
-            (lambda (&rest _) (browse-url "https://mail.google.com/mail/u/?authuser=aaron@visiblearc.com"))))))
+            (lambda (&rest _) (browse-url "https://mail.google.com/"))))))
   (dashboard-setup-startup-hook))
 
 ;; ============================================================================
