@@ -84,6 +84,15 @@
 ;; Font size
 (set-face-attribute 'default nil :height 120)
 
+;; Emoji font fallback (Windows: Segoe UI Emoji, macOS: Apple Color Emoji)
+(when (display-graphic-p)
+  (set-fontset-font t 'emoji
+                    (cond
+                     ((eq system-type 'windows-nt) "Segoe UI Emoji")
+                     ((eq system-type 'darwin) "Apple Color Emoji")
+                     (t "Noto Color Emoji"))
+                    nil 'prepend))
+
 ;; ============================================================================
 ;; Theme
 ;; ============================================================================
@@ -93,27 +102,28 @@
   (load-theme 'zenburn t))
 
 ;; ============================================================================
-;; Icons
+;; Icons (nerd-icons - better maintained than all-the-icons)
 ;; ============================================================================
 
-(use-package all-the-icons
+;; Run M-x nerd-icons-install-fonts on first use
+(use-package nerd-icons
   :if (display-graphic-p))
 
-(use-package all-the-icons-dired
-  :after all-the-icons
-  :hook (dired-mode . all-the-icons-dired-mode))
+(use-package nerd-icons-dired
+  :after nerd-icons
+  :hook (dired-mode . nerd-icons-dired-mode))
 
 ;; ============================================================================
 ;; Dashboard
 ;; ============================================================================
 
 (use-package dashboard
-  :after all-the-icons
+  :after nerd-icons
   :config
   (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "Take Dead Aim")
-  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-navigator t)
   (setq dashboard-set-footer nil)
   (setq dashboard-set-heading-icons t)
@@ -123,13 +133,13 @@
                           (projects . 5)))
   ;; Navigator buttons
   (setq dashboard-navigator-buttons
-        `(((,(all-the-icons-octicon "mark-github" :height 1.0 :v-adjust 0.0)
+        `(((,(nerd-icons-faicon "nf-fa-github" :height 1.0 :v-adjust 0.0)
             "Repos" "GitHub Repos"
             (lambda (&rest _) (browse-url "https://github.com/")))
-           (,(all-the-icons-octicon "organization" :height 1.0 :v-adjust 0.0)
+           (,(nerd-icons-faicon "nf-fa-building" :height 1.0 :v-adjust 0.0)
             "Jira" "Atlassian"
             (lambda (&rest _) (browse-url "https://start.atlassian.com/")))
-           (,(all-the-icons-octicon "mail-read" :height 1.0 :v-adjust 0.0)
+           (,(nerd-icons-faicon "nf-fa-envelope" :height 1.0 :v-adjust 0.0)
             "Gmail" "Email"
             (lambda (&rest _) (browse-url "https://mail.google.com/"))))))
   (dashboard-setup-startup-hook))

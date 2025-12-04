@@ -7,7 +7,7 @@ Personal Emacs configuration using modern `use-package` declarations.
 - **Claude Code** - AI pair programming with Claude via agent-shell + ACP
 - **Dashboard** - Custom startup screen with quick links and recent files
 - **Zenburn Theme** - Easy on the eyes color scheme
-- **All The Icons** - Beautiful icons throughout the UI
+- **Nerd Icons** - Beautiful icons throughout the UI
 - **Projectile** - Project management and navigation
 - **Ivy/Counsel/Swiper** - Fast completion and selection narrowing
 - **Company** - Code autocompletion
@@ -56,7 +56,7 @@ cp -r emacsconfig/.emacs.d ~/
 
 1. Copy `.emacs.d/` directory to your home folder
 2. Start Emacs - packages will auto-install on first launch
-3. Run `M-x all-the-icons-install-fonts` to install icon fonts
+3. Run `M-x nerd-icons-install-fonts` to install icon fonts
 
 ## Structure
 
