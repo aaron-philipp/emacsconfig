@@ -23,8 +23,14 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Auto-update packages
+;; Reset GC threshold after startup (set high in early-init.el)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024))))
+
+;; Auto-update packages (defer - not needed at startup)
 (use-package auto-package-update
+  :defer t
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t))
@@ -124,6 +130,7 @@
 
 (use-package projectile
   :diminish projectile-mode
+  :defer 0.5
   :config
   (projectile-mode +1)
   :bind-keymap
@@ -135,6 +142,7 @@
 
 (use-package ivy
   :diminish ivy-mode
+  :defer 0.1
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
@@ -157,6 +165,7 @@
          ("C-r" . swiper-backward)))
 
 (use-package neotree
+  :commands neotree-toggle
   :bind ("<f8>" . neotree-toggle)
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
@@ -178,7 +187,8 @@
 ;; ============================================================================
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :defer 1
+  :config (global-flycheck-mode))
 
 (use-package rainbow-identifiers
   :hook (prog-mode . rainbow-identifiers-mode))
@@ -216,7 +226,8 @@
 (use-package npm-mode
   :hook (web-mode . npm-mode))
 
-(use-package web-beautify)
+(use-package web-beautify
+  :defer t)
 
 ;; ============================================================================
 ;; LSP (Language Server Protocol)
@@ -240,6 +251,7 @@
 ;; ============================================================================
 
 (use-package org
+  :defer t
   :config
   (setq org-startup-indented t)
   (setq org-hide-leading-stars t))
@@ -252,10 +264,12 @@
 ;; ============================================================================
 
 (use-package spaceline
+  :defer 0.5
   :config
   (spaceline-emacs-theme))
 
 (use-package mode-icons
+  :defer 0.5
   :config
   (mode-icons-mode))
 
@@ -265,14 +279,14 @@
 
 ;; Terminal emulator for Claude Code (using eat - lighter than vterm)
 (use-package eat
-  :ensure t)
+  :defer t)
 
 ;; Claude Code integration
 ;; Requires: npm install -g @anthropic-ai/claude-code
 ;; Or: brew install anthropic/tap/claude-code
 (use-package claude-code
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
-  :after eat
+  :defer 1
   :config
   ;; Use eat as the terminal backend (alternative: 'vterm)
   (setq claude-code-terminal-backend 'eat)
@@ -302,9 +316,11 @@
 ;; ============================================================================
 
 (use-package emojify
-  :hook (after-init . global-emojify-mode))
+  :defer 2
+  :config (global-emojify-mode))
 
-(use-package chess)
+(use-package chess
+  :defer t)
 
 ;; ============================================================================
 ;; Custom File
