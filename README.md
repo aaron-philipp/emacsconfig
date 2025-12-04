@@ -4,7 +4,7 @@ Personal Emacs configuration using modern `use-package` declarations.
 
 ## Features
 
-- **Claude Code** - AI pair programming with Claude directly in Emacs
+- **Claude Code** - AI pair programming with Claude via agent-shell + ACP
 - **Dashboard** - Custom startup screen with quick links and recent files
 - **Zenburn Theme** - Easy on the eyes color scheme
 - **All The Icons** - Beautiful icons throughout the UI
@@ -21,14 +21,21 @@ Personal Emacs configuration using modern `use-package` declarations.
 
 ### Prerequisites
 
-For Claude Code integration, install the CLI first:
+For Claude Code integration, install the CLI and ACP wrapper:
 
 ```bash
-# Using npm
+# Install Claude Code CLI
+# Option 1: Standalone installer (recommended)
+# Download from https://claude.ai/download
+
+# Option 2: npm
 npm install -g @anthropic-ai/claude-code
 
-# Or using Homebrew (macOS)
+# Option 3: Homebrew (macOS)
 brew install anthropic/tap/claude-code
+
+# Then install the ACP wrapper (requires Node.js)
+npm install -g @zed-industries/claude-code-acp
 ```
 
 ### Quick Install
@@ -67,13 +74,8 @@ cp -r emacsconfig/.emacs.d ~/
 
 | Key | Function |
 |-----|----------|
-| `C-c c c` | Start Claude Code in project root |
-| `C-c c s` | Send prompt to Claude |
-| `C-c c x` | Send prompt with current file context |
-| `C-c c e` | Fix error at point (flycheck/flymake) |
-| `C-c c r` | Resume previous session |
-| `C-c c k` | Kill Claude process |
-| `C-c c m` | Cycle mode (default/auto-accept/plan) |
+| `C-c c c` | Start agent-shell with Claude |
+| `C-c c n` | New agent-shell session |
 
 ### General
 
