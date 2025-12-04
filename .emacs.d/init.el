@@ -55,8 +55,8 @@
 (set-frame-parameter nil 'alpha '(99))
 (add-to-list 'default-frame-alist '(alpha . (99)))
 
-;; Set initial frame size
-(set-frame-size (selected-frame) 80 40)
+;; Set initial frame size (columns x rows)
+(set-frame-size (selected-frame) 100 50)
 
 ;; Line numbers
 (global-display-line-numbers-mode t)
@@ -73,6 +73,9 @@
 ;; Use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+
+;; Font size
+(set-face-attribute 'default nil :height 120)
 
 ;; ============================================================================
 ;; Theme

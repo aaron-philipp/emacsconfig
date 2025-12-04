@@ -15,6 +15,7 @@ Personal Emacs configuration using modern `use-package` declarations.
 - **Python** - Elpy and Anaconda mode for Python development
 - **Web** - Web mode with npm integration
 - **Org Mode** - Notes and agenda with timeline
+- **Fast Startup** - Deferred loading for sub-1-second startup
 
 ## Installation
 
