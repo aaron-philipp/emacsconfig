@@ -74,6 +74,13 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
+;; UTF-8 everywhere
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
 ;; Font size
 (set-face-attribute 'default nil :height 120)
 
