@@ -9,7 +9,8 @@ Personal Emacs configuration using modern `use-package` declarations.
 - **Zenburn Theme** - Easy on the eyes color scheme
 - **All The Icons** - Beautiful icons throughout the UI
 - **Projectile** - Project management and navigation
-- **Helm** - Incremental completion and selection narrowing
+- **Ivy/Counsel/Swiper** - Fast completion and selection narrowing
+- **Company** - Code autocompletion
 - **LSP Mode** - Language Server Protocol support
 - **Python** - Elpy and Anaconda mode for Python development
 - **Web** - Web mode with npm integration
@@ -78,10 +79,14 @@ cp -r emacsconfig/.emacs.d ~/
 | Key | Function |
 |-----|----------|
 | `C-c p` | Projectile prefix |
-| `C-s` | Helm swoop (search) |
+| `C-s` | Swiper (search in buffer) |
+| `C-r` | Swiper backward |
 | `F8` | Toggle Neotree |
-| `M-x` | Helm M-x |
-| `C-x C-f` | Helm find files |
+| `M-x` | Counsel M-x |
+| `C-x C-f` | Counsel find files |
+| `C-x b` | Ivy switch buffer |
+| `C-c g` | Counsel git (find files in repo) |
+| `C-c j` | Counsel git grep (search in repo) |
 | `C-c l` | LSP prefix |
 
 ## Dashboard Quick Links
@@ -100,13 +105,14 @@ Edit `.emacs.d/init.el` to customize. The config is organized into sections:
 4. Icons
 5. Dashboard
 6. Project Management
-7. Navigation & Search
-8. Programming (General, Python, Web)
-9. LSP
-10. Org Mode
-11. Modeline
-12. AI - Claude Code
-13. Fun Stuff
+7. Navigation & Search (Ivy/Counsel/Swiper)
+8. Autocompletion (Company)
+9. Programming (General, Python, Web)
+10. LSP
+11. Org Mode
+12. Modeline
+13. AI - Claude Code
+14. Fun Stuff
 
 ## Requirements
 

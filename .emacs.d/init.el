@@ -130,26 +130,48 @@
   ("C-c p" . projectile-command-map))
 
 ;; ============================================================================
-;; Navigation & Search
+;; Navigation & Search (ivy/counsel/swiper)
 ;; ============================================================================
 
-(use-package helm
-  :diminish helm-mode
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x b" . helm-mini))
+(use-package ivy
+  :diminish ivy-mode
   :config
-  (helm-mode 1))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
 
-(use-package helm-swoop
-  :after helm
-  :bind (("C-s" . helm-swoop)
-         ("C-r" . helm-swoop-back-to-last-point)))
+(use-package counsel
+  :after ivy
+  :diminish counsel-mode
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("C-x b" . ivy-switch-buffer)
+         ("C-c g" . counsel-git)
+         ("C-c j" . counsel-git-grep))
+  :config
+  (counsel-mode 1))
+
+(use-package swiper
+  :after ivy
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper-backward)))
 
 (use-package neotree
   :bind ("<f8>" . neotree-toggle)
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+;; ============================================================================
+;; Autocompletion
+;; ============================================================================
+
+(use-package company
+  :diminish company-mode
+  :hook (after-init . global-company-mode)
+  :config
+  (setq company-idle-delay 0.2)
+  (setq company-minimum-prefix-length 2)
+  (setq company-selection-wrap-around t))
 
 ;; ============================================================================
 ;; Programming - General
